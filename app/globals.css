@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-ink/10;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-paper text-ink font-body antialiased;
+  }
+
+  /* Keep anchored sections clear of the fixed navbar when jumped to */
+  section[id],
+  #footer {
+    scroll-margin-top: 88px;
+  }
+
+  ::selection {
+    @apply bg-volt text-paper;
+  }
+
+  :focus-visible {
+    outline: 2px solid #2563EB;
+    outline-offset: 3px;
+  }
+}
+
+@layer utilities {
+  .skip-link {
+    @apply fixed left-4 top-4 z-[100] -translate-y-24 rounded bg-volt px-4 py-3 font-mono text-[12px] uppercase tracking-widest2 text-paper transition-transform duration-300 focus:translate-y-0;
+  }
+
+  .eyebrow {
+    @apply font-mono text-[11px] uppercase tracking-widest2 text-smoke;
+  }
+
+  .hairline {
+    @apply border-t border-ink/15;
+  }
+
+  .stitch {
+    background-image: repeating-linear-gradient(
+      to right,
+      currentColor 0,
+      currentColor 6px,
+      transparent 6px,
+      transparent 12px
+    );
+    height: 1px;
+    color: inherit;
+    opacity: 0.35;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
